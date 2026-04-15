@@ -59,3 +59,19 @@ styles/             # Global style files
 - Environment variables should be stored in `.env.local`.
 - Build and local artifacts are ignored via `.gitignore`.
 - Project is ready to deploy on Vercel.
+
+## Deploy to GitHub Pages
+
+1. Push code to a GitHub repository.
+2. In GitHub, open `Settings > Pages`.
+3. Set `Source` to `GitHub Actions`.
+4. Ensure your default branch is `main` (workflow is configured for `main`).
+5. Push changes to `main` or run the workflow manually from `Actions`.
+
+The deployment workflow is located at `.github/workflows/deploy.yml`.
+
+Notes for GitHub Pages:
+
+- The app uses static export (`output: 'export'`) and deploys the `out/` folder.
+- `NEXT_PUBLIC_BASE_PATH` is set automatically to `/<repo-name>` in CI.
+- If you deploy to a user/organization root page (`<user>.github.io`), set `NEXT_PUBLIC_BASE_PATH` to an empty string in the workflow build step.
